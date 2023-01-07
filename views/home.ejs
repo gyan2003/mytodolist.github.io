@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>
+            <%=title%>
+        </title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="https://kit.fontawesome.com/7b7d6a1d5e.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <h1>To DO APP</h1>
+        <div class="container">
+        
+         <form action="/create-contact" method="post">
+            <h3 class="margin-around">
+                Add your Task
+            </h3>
+            <div   class="margin-around">
+                <input type="text" name="description" placeholder="What do you need to do?"> 
+            </div>
+           
+           <div   class="margin-around">
+            <input type="date" name="date" placeholder="Deadline"> 
+           </div>
+           <button id="btn" type="submit" class="margin-around">Add</button>
+        </form>
+    </div>
+         <section id="task_list">
+           <%for(let i of task) {%>
+             <li>
+             <div id="des"><%=i.description%></div>
+             <div id="date"><%=i.date.toISOString().split('T')[0]%></div>
+             <div id="delete">
+                <a href="/delete-task/?id=<%=i._id%>">
+                 <i class="fa-solid fa-trash"></i>
+                </a>
+            </div>
+             </li>
+           <%}%>
+
+         </section>
+
+        <script src="/js/script.js"></script>
+    </body>
+</html>
